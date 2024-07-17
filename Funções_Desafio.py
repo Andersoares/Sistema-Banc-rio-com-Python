@@ -138,7 +138,6 @@ def menu():
         [2] Saque
         [3] Extrato
         [4] Criar Usuario
-        [5] Crir Conta
         [6] Sair
 
     -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
