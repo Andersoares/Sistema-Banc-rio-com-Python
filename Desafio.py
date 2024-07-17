@@ -8,7 +8,7 @@ limite_por_saque = 500
 extrato_conta = []
 numero_de_saques = 0
 usuarios = []
-contas = []
+
 
 while True:
     try:
@@ -33,7 +33,7 @@ while True:
                 usuarios.append(cliente)
                 print('Usuário criado com sucesso!')
             else:
-                print('Usuário já existe!')
+                print('Não foi possivel criar usuário, o CPF informado já costa no banco de dados!')
 
         elif opcao == 5:
             Funções_Desafio.carregando('Saindo do sistema!', 'Obrigado por ultilizar nosso sistema, até a proxima :)')

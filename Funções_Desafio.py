@@ -1,24 +1,46 @@
 def criar_usuario():
     try:
-        nome = str(input('Digite seu nome: '))
-        data_nascimento = input('Digite sua data de nascimento (DD/MM/AAAA): ')
-        cpf = int(input('Digite seu CPF (Somente números): '))
-        print('Digite seu endereco! ')
-        logradouro = str(input('Logradouro: '))
-        numero = str(input('Numero da residencia: '))
-        bairro = str(input('Bairro: '))
-        cidade = str(input('Cidade / Sigla do Estado: '))
+        nome = input('Digite seu nome: ')
+
+        # Loop para garantir que a data de nascimento esteja no formato correto
+        while True:
+            data_nascimento = input('Digite sua data de nascimento (DD/MM/AAAA): ')
+            try:
+                dia, mes, ano = data_nascimento.split('/')
+                if len(dia) == 2 and len(mes) == 2 and len(ano) == 4:
+                    dia, mes, ano = int(dia), int(mes), int(ano)
+                    break
+                else:
+                    print('Data de nascimento no formato inválido. Por favor, digite novamente.')
+            except ValueError:
+                print('Data de nascimento no formato inválido. Por favor, digite novamente.')
+
+        # Loop para garantir que o CPF seja numérico e tenha 11 dígitos
+        while True:
+            cpf = input('Digite seu CPF (Somente números): ')
+            if cpf.isdigit() and len(cpf) == 11:
+                break
+            else:
+                print('CPF inválido. Deve conter 11 dígitos numéricos. Por favor, digite novamente.')
+
+        print('Digite seu endereço!')
+        logradouro = input('Logradouro: ')
+        numero = input('Número da residência: ')
+        bairro = input('Bairro: ')
+        cidade = input('Cidade / Sigla do Estado: ')
         endereco = f'{logradouro}, {numero}, {bairro}, {cidade}'
 
-        cliente = {'nome': nome, 'data_nascimento': data_nascimento, 'cpf': cpf, 'endereco': endereco}
+        cliente = {
+            'nome': nome,
+            'data_nascimento': data_nascimento,
+            'cpf': cpf,
+            'endereco': endereco
+        }
 
         return cliente
-    except ValueError:
-        print('Valor inválido')
 
-
-def criar_conta():
-   pass
+    except Exception as e:
+        print(f'Ocorreu um erro inesperado: {e}')
 
 
 def deposito(saldo, extrato_conta, /):
@@ -116,7 +138,8 @@ def menu():
         [2] Saque
         [3] Extrato
         [4] Criar Usuario
-        [5] Sair
+        [5] Crir Conta
+        [6] Sair
 
     -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     """
